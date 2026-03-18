@@ -2,7 +2,7 @@ import { Activity, ShieldCheck, Check } from 'lucide-react';
 
 const Services = () => {
   return (
-    <section className="services-section">
+    <section className="services-section" id="services">
       <div className="services-bg-pattern"></div>
       
       {/* Services Header */}

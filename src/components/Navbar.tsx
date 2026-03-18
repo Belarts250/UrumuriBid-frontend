@@ -1,32 +1,46 @@
-import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const navItems = ['Home', 'Products', 'Blog', 'About'];
+const navItems = [
+  { label: 'UrumuriBid', path: '/', isAnchor: false },
+  { label: 'Services', path: '#services', isAnchor: true },
+  { label: 'Contact', path: '#contact', isAnchor: true },
+  { label: 'Login', path: '/login', isAnchor: false },
+  { label: 'Get Started', path: '/signup', isAnchor: false, isPrimary: true },
+];
 
 const Navbar = () => {
-  const [activeItem, setActiveItem] = useState('Home');
-
   return (
     <nav className="nav-wrapper">
       <ul className="nav-pill">
-        {navItems.map((item) => {
-          const isActive = activeItem === item;
-          return (
-            <li key={item} className="nav-item">
-              <button
-                type="button"
-                onClick={() => setActiveItem(item)}
-                className={`nav-button ${isActive ? 'nav-button-active' : ''}`}
+        {navItems.map(({ label, path, isAnchor, isPrimary }) => (
+          <li key={path} className="nav-item">
+            {isAnchor ? (
+              <a href={path} className="nav-button">
+                <span className="nav-label">{label}</span>
+              </a>
+            ) : (
+              <NavLink
+                to={path}
+                className={({ isActive }) =>
+                  label === 'UrumuriBid' 
+                    ? 'nav-logo-link' 
+                    : `nav-button ${isActive ? 'nav-button-active' : ''} ${isPrimary ? 'nav-button-primary' : ''}`
+                }
               >
-                <span className="nav-label">{item}</span>
-                {isActive && (
-                  <span className="nav-badge">
-                    4
-                  </span>
-                )}
-              </button>
-            </li>
-          );
-        })}
+                <span className="nav-label">
+                  {label === 'UrumuriBid' ? (
+                    <span className="logo-text">
+                      <span className="logo-blue">Urumuri</span>
+                      <span className="logo-bid">Bid</span>
+                    </span>
+                  ) : (
+                    label
+                  )}
+                </span>
+              </NavLink>
+            )}
+          </li>
+        ))}
       </ul>
     </nav>
   );

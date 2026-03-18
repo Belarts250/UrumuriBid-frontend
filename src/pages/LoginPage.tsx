@@ -1,12 +1,21 @@
 import AuthLayout from './AuthLayout';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate login and redirect
+    navigate('/dashboard');
+  };
+
   return (
     <AuthLayout
       title="Welcome back"
       subtitle="Sign in to continue to your auctions dashboard."
     >
-      <form className="auth-form">
+      <form className="auth-form" onSubmit={handleSignIn}>
         <h2 className="auth-form-title">Sign In</h2>
 
         <div className="auth-field">
@@ -43,6 +52,10 @@ const LoginPage = () => {
         <button type="button" className="auth-secondary-btn">
           Continue with Apple
         </button>
+
+        <div className="auth-sample-data" style={{ marginTop: '20px', padding: '15px', background: '#f8fafc', borderRadius: '10px', border: '1px solid #e2e8f0', fontSize: '0.85rem', textAlign: 'center' }}>
+          <p style={{ margin: 0, color: '#64748b' }}><strong>Sample Data:</strong> admin@urumuribid.rw / password123</p>
+        </div>
       </form>
     </AuthLayout>
   );

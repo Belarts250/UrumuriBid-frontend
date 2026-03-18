@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -50,7 +50,6 @@ const heroSections = [
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<HTMLElement[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -67,49 +66,37 @@ const Hero = () => {
           snap: 1 / (sections.length - 1),
           start: "top top",
           end: () => `+=${(sections.length - 1) * window.innerHeight}`,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const index = Math.round(progress * (heroSections.length - 1));
-            // Use functional state update to avoid dependency on currentIndex
-            setCurrentIndex(index);
-          }
         }
       });
     }, containerRef);
 
     return () => ctx.revert();
-  }, []); // Empty dependency array to pre-emptively fix "changed size" crash and prevent recreation
-
-  const activeLabel = heroSections[currentIndex] || heroSections[0];
+  }, []); 
 
   return (
-    <>
-      {/* Hero Text Container - Left Aligned */}
-      <div className="text-box-container">
-        <div className="content-box">
-          <h1 className="hero-headline">{activeLabel.headline}</h1>
-          <p className="hero-subheadline">{activeLabel.subheadline}</p>
-          <div className="cta-group">
-            <button className="btn btn-primary">{activeLabel.cta1}</button>
-            <button className="btn btn-outline">{activeLabel.cta2}</button>
+    <div className="container" ref={containerRef}>
+      {heroSections.map((section, index) => (
+        <section 
+          key={section.id} 
+          className="panel"
+          ref={(el) => { if (el) sectionsRef.current[index] = el; }}
+        >
+          <img src={section.image} alt={section.headline} className="hero-image" />
+          <div className="panel-shadow"></div>
+          
+          <div className="text-box-container">
+            <div className="content-box">
+              <h1 className="hero-headline">{section.headline}</h1>
+              <p className="hero-subheadline">{section.subheadline}</p>
+              <div className="cta-group">
+                <button className="btn btn-primary">{section.cta1}</button>
+                <button className="btn btn-outline">{section.cta2}</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Horizontal Panels */}
-      <div className="container" ref={containerRef}>
-        {heroSections.map((section, index) => (
-          <section 
-            key={section.id} 
-            className="panel"
-            ref={(el) => { if (el) sectionsRef.current[index] = el; }}
-          >
-            <img src={section.image} alt={section.headline} className="hero-image" />
-            <div className="panel-shadow"></div>
-          </section>
-        ))}
-      </div>
-    </>
+        </section>
+      ))}
+    </div>
   );
 };
 
