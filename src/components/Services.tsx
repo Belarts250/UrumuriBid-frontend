@@ -1,5 +1,6 @@
 import { Activity, ShieldCheck, Check } from 'lucide-react';
 import heroImage7 from "../assets/hero-image7.jpg";
+import heroImage6 from "../assets/hero-image6.jpg";
 
 const Services = () => {
   return (
@@ -60,7 +61,7 @@ const Services = () => {
       {/* Feature Block 2: Right Image, Left Text */}
       <div className="feature-block reverse">
         <div className="feature-image-wrapper">
-          <img src="/src/assets/hero-image6.jpg" alt="Service Asset" className="feature-image" />
+          <img src={heroImage6} alt="Service Asset" className="feature-image" />
         </div>
         <div className="feature-content">
           <h2>Brand Your <span>Repur Doors</span></h2>
