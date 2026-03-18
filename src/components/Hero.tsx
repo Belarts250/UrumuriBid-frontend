@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import heroImage0 from "../assets/hero-image.jpg";
+import heroImage1 from "../assets/hero-image1.jpg";
+import heroImage2 from "../assets/hero-image2.webp";
+import heroImage3 from "../assets/hero-image3.avif";
+import heroImage5 from "../assets/hero-image5.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +16,7 @@ const heroSections = [
     subheadline: "Participate in government-approved auctions with complete transparency. Every bid is securely recorded and publicly verifiable.",
     cta1: "View Auctions",
     cta2: "Start Bidding",
-    image: "/src/assets/hero-image.jpg"
+    image: heroImage0
   },
   {
     id: 2,
@@ -19,7 +24,7 @@ const heroSections = [
     subheadline: "Access government property auctions from anywhere. Bid in real time and compete fairly with full transparency.",
     cta1: "Browse Auctions",
     cta2: "Register to Bid",
-    image: "/src/assets/hero-image1.jpg"
+    image: heroImage1
   },
   {
     id: 3,
@@ -27,7 +32,7 @@ const heroSections = [
     subheadline: "Powered by blockchain technology to guarantee secure bidding, immutable records, and trusted results.",
     cta1: "Learn How It Works",
     cta2: "Explore Auctions",
-    image: "/src/assets/hero-image2.webp"
+    image: heroImage2
   },
   {
     id: 4,
@@ -35,7 +40,7 @@ const heroSections = [
     subheadline: "A national digital platform transforming enforcement auctions into a secure, transparent, and accessible experience.",
     cta1: "View Opportunities",
     cta2: "Join the Platform",
-    image: "/src/assets/hero-image3.avif"
+    image: heroImage3
   },
   {
     id: 5,
@@ -43,7 +48,7 @@ const heroSections = [
     subheadline: "Buy residential, commercial, and future asset auctions through a trusted digital marketplace.",
     cta1: "View Available Assets",
     cta2: "Start Bidding Today",
-    image: "/src/assets/hero-image5.jpg"
+    image: heroImage5
   }
 ];
 
