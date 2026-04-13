@@ -19,21 +19,21 @@ const Services = () => {
           <div className="icon-wrapper">
             <Check size={32} />
           </div>
-          <h3>Reter Repale</h3>
+          <h3>Transparent Auctions</h3>
           <p>Complete transparency in every transaction, ensuring government-approved standards are met.</p>
         </div>
         <div className="service-icon-item">
           <div className="icon-wrapper">
             <Activity size={32} />
           </div>
-          <h3>Leak Detection</h3>
+          <h3>Safe Bidding</h3>
           <p>Advanced monitoring and security to protect your bids and guarantee immutable records.</p>
         </div>
         <div className="service-icon-item">
           <div className="icon-wrapper">
             <ShieldCheck size={32} />
           </div>
-          <h3>Installation</h3>
+          <h3>Blockchain Security</h3>
           <p>Powered by blockchain technology to guarantee secure bidding and trusted results.</p>
         </div>
       </div>
