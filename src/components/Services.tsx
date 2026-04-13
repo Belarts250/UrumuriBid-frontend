@@ -38,7 +38,6 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Feature Block 1: Left Image, Right Text */}
       <div className="feature-block">
         <div className="feature-image-wrapper">
           <img src={heroImage7} alt="Service Van" className="feature-image" />
